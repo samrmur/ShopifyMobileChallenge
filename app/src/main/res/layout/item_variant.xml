@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/divider_image_start_margin"
+    android:paddingEnd="10dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="10dp"
+    xmlns:tools="http://schemas.android.com/tools">
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/ItemTitle"
+        android:textSize="12sp"
+        tools:text="Testing Title" />
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/ItemDescription"
+        android:textSize="12sp"
+        android:layout_below="@id/title"
+        tools:text="Price: $12.99" />
+    <TextView
+        android:id="@+id/inventoryCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/ItemDescription"
+        android:textSize="12sp"
+        android:layout_below="@id/price"
+        tools:text="Inventory Count: 122" />
+</RelativeLayout>

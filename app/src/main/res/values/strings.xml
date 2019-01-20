@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ShopifyChallenge</string>
+    <string name="title_collections">Custom Collections</string>
+    <string name="msg_content_description">Content Description</string>
+    <string name="msg_vendor">Vendor: %1$s</string>
+    <string name="msg_tags">Tags: %1$s</string>
+    <string name="msg_price">Price: $%1$s</string>
+    <string name="msg_inventory_count">Inventory Count: %1$d</string>
+    <string name="msg_last_updated">Last Updated: %1$s</string>
+    <string name="msg_empty_list">No results found. Reload?</string>
+    <string name="msg_generic_error">An error has occurred!</string>
+</resources>

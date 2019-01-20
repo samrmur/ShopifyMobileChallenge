@@ -1,0 +1,60 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+
+android {
+    compileSdkVersion versions.compileSdk
+    defaultConfig {
+        applicationId "com.example.shopifychallenge"
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+androidExtensions {
+    experimental = true
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation libraries.kotlinStd
+    implementation libraries.coroutines
+    implementation libraries.coroutinesAndroid
+
+    implementation libraries.recyclerView
+    implementation libraries.fragments
+    implementation libraries.design
+    implementation libraries.androidCore
+
+    implementation libraries.dagger
+    implementation libraries.daggerAndroid
+    implementation libraries.daggerSupport
+    kapt libraries.daggerProcessor
+    kapt libraries.daggerAndroidApt
+
+    implementation libraries.retrofit
+    implementation libraries.retrofitAdapter
+    implementation libraries.moshi
+    implementation libraries.moshiConverter
+    implementation libraries.kotshiApi
+    kapt libraries.kotshiCompiler
+
+    implementation libraries.circularImage
+    implementation libraries.picasso
+
+    testImplementation libraries.junit
+    androidTestImplementation libraries.testRunner
+    androidTestImplementation libraries.testEspresso
+}
