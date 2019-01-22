@@ -1,21 +1,27 @@
 package com.example.shopifychallenge.products.presentation
 
+import androidx.lifecycle.Lifecycle
 import com.example.shopifychallenge.api.services.ShopifyService
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import com.example.shopifychallenge.util.coroutines.LifecycleScope
+import kotlinx.coroutines.*
 import org.json.JSONObject
 import java.lang.Exception
 import javax.inject.Inject
 
 class ProductsPresenter @Inject constructor(
     private val view: ProductsView,
-    private val service: ShopifyService
+    private val service: ShopifyService,
+    lifecycle: Lifecycle,
+    private val scope: LifecycleScope
 ) {
+    init {
+        lifecycle.addObserver(scope)
+    }
+
     fun getProducts(id: Long) {
         view.onStartLoading()
 
-        GlobalScope.launch(Dispatchers.Main) {
+        scope.launch {
             try {
                 // Get all product ids
                 val body = service.getProductIds(id).await().string()

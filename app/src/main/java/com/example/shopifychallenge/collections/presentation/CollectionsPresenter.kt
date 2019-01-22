@@ -1,9 +1,9 @@
 package com.example.shopifychallenge.collections.presentation
 
+import androidx.lifecycle.Lifecycle
 import com.example.shopifychallenge.api.services.ShopifyService
 import com.example.shopifychallenge.main.presentation.MainNavigator
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
+import com.example.shopifychallenge.util.coroutines.LifecycleScope
 import kotlinx.coroutines.launch
 import java.lang.Exception
 import javax.inject.Inject
@@ -11,12 +11,18 @@ import javax.inject.Inject
 class CollectionsPresenter @Inject constructor(
     private val service: ShopifyService,
     private val view: CollectionsView,
+    lifecycle: Lifecycle,
+    private val scope: LifecycleScope,
     private val navigator: MainNavigator
 ) {
+    init {
+        lifecycle.addObserver(scope)
+    }
+
     fun getCollections() {
         view.onStartLoading()
 
-        GlobalScope.launch(Dispatchers.Main) {
+        scope.launch {
             try {
                 view.onCollectionsReceived(service.getCollections().await().get)
             } catch (error: Exception) {

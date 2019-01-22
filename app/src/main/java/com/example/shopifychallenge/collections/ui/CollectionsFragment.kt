@@ -47,6 +47,10 @@ class CollectionsFragment: Fragment(), CollectionsView, View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
         setupAdapter()
+    }
+
+    override fun onResume() {
+        super.onResume()
         presenter.getCollections()
     }
 

@@ -96,6 +96,11 @@ class ProductsFragment: Fragment(), ProductsView, AppBarLayout.OnOffsetChangedLi
         setupHeader()
         setupAdapter()
         text_empty_list.setOnClickListener(this)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        toolbar.title = ""
         presenter.getProducts(id)
     }
 
@@ -104,11 +109,11 @@ class ProductsFragment: Fragment(), ProductsView, AppBarLayout.OnOffsetChangedLi
     }
 
     override fun onStartLoading() {
-        loading_bar.showView()
+        loading_bar?.showView()
     }
 
     override fun onFinishLoading() {
-        loading_bar.hideView()
+        loading_bar?.hideView()
     }
 
     override fun onError(message: String) {
@@ -139,8 +144,8 @@ class ProductsFragment: Fragment(), ProductsView, AppBarLayout.OnOffsetChangedLi
     }
 
     private fun onErrorOccurred() {
-        loading_bar.hideView()
-        text_empty_list.showView()
+        loading_bar?.hideView()
+        text_empty_list?.showView()
     }
 
     private fun setupAdapter() {

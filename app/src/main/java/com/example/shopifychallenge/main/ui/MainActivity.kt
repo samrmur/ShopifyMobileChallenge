@@ -22,7 +22,9 @@ class MainActivity: AppCompatActivity(), HasSupportFragmentInjector {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        navigator.toCollections()
+
+        if (savedInstanceState == null)
+            navigator.toCollections()
     }
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentDispatchingAndroidInjector
